@@ -39,6 +39,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   sqflite: ^2.0.2
+  root:
+    git:
+      url: https://github.com/matheme42/root
+      ref: 9f85ea86f0d229b949bbc4056507750ae8fb52b6
+  shimmer: ^2.0.0
+  weekday_selector: ^1.1.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

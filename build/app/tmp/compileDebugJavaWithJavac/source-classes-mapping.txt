@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/telzac/habits_organizer/BuildConfig.java
- com.telzac.habits_organizer.BuildConfig

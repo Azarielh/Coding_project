@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-// Créer classe Singleton
+// Créer class Singleton
 class DatabaseController {
   static final DatabaseController _databaseController = DatabaseController._internal();
   Database? _database;
@@ -11,10 +11,18 @@ class DatabaseController {
 
   DatabaseController._internal();
 
-  get database => _database;
+  get database async {
+    if (_database == null) {
+      await _create();
+    }
+    return (_database);
+  }
+
+  String habitsTable = "Habits";
+  String todoTable = "Todo";
 
 // Créer base de donnée
-  Future<Database> create() async {
+  Future<Database> _create() async {
     var databasesPath = await getDatabasesPath();
     String path = join(databasesPath, 'habit.db');
 
@@ -23,11 +31,11 @@ class DatabaseController {
     onCreate: (Database db, int version) async {
       // Creer Base de donnée d'habitudes
       await db.execute(
-        'CREATE TABLE Habits (id INTEGER PRIMARY KEY, designation TEXT, frequence TEXT, interval TEXT, mois TEXT, jours TEXT)'
+        'CREATE TABLE $habitsTable (id INTEGER PRIMARY KEY, designation TEXT, frequence TEXT, interval TEXT, mois TEXT, jours TEXT)'
       );
       // Créer base de donnée To.do
       await db.execute(
-          'CREATE TABLE Todo (id INTEGER PRIMARY KEY, habits_id INTEGER, when TEXT, done INTEGER, date_time INTEGER)'
+          'CREATE TABLE $todoTable (id INTEGER PRIMARY KEY, habits_id INTEGER, when TEXT, done INTEGER, date_time INTEGER)'
       );
     });
     return (database);
