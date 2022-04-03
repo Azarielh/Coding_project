@@ -9,25 +9,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0b33b8-5dd3-49a6-898e-139e7b9d0307" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Habits_Organizer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/loading.png" afterDir="false" />
+    <list default="true" id="9337c09a-a942-4ca5-9b48-1b2cc12f41b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/appbars.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/habits_stat.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/listhabits.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view/todolistview.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Habits_Organizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Habits_Organizer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/habits_organizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/habits_organizer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/context.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/context.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/database_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/database_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/habits_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/habits_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/models/habits.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/models/habits.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/models/model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/models/model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/todo_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/todo_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/new_habits.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/new_habits.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,33 +49,29 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="27D8rXqMQYfgdzrtirt9XKP30A2" />
+  <component name="ProjectId" id="27DCnw4iDs6nOBBuPI3JSATQ4lJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Maxence\StudioProjects\Habits_Organizer\assets" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Azarielh\StudioProjects\Habits_Organizer\lib" />
+      <recent name="C:\Users\Azarielh\StudioProjects\Habits_Organizer\lib\database\model" />
     </key>
   </component>
   <component name="RunManager">
@@ -90,11 +83,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8d0b33b8-5dd3-49a6-898e-139e7b9d0307" name="Default Changelist" comment="" />
-      <created>1648843512648</created>
+      <changelist id="9337c09a-a942-4ca5-9b48-1b2cc12f41b9" name="Default Changelist" comment="" />
+      <created>1648845448065</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1648843512648</updated>
+      <updated>1648845448065</updated>
     </task>
     <servers />
   </component>
@@ -103,18 +96,23 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint suspend="THREAD" type="dart-exception" />
-      </default-breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

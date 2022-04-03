@@ -45,9 +45,7 @@ dev_dependencies:
       ref: 32da93ca12530dbf0d6c45fd9ebfd17f87cc6408
   shimmer: ^2.0.0
   weekday_selector: ^1.1.0
-  select_form_field: ^2.2.0
   flutter_form_bloc: ^0.30.1
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

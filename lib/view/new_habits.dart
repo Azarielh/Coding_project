@@ -5,7 +5,7 @@ import 'package:habits_organizer/context.dart';
 import 'package:habits_organizer/main.dart';
 import 'package:root/home.dart';
 
-class NewHabit extends StatefulWidget {
+class NewHabit extends StatefulWidget{
   const NewHabit({Key? key}) : super(key: key);
 
   @override

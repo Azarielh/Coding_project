@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:habits_organizer/appbars.dart';
 import 'package:habits_organizer/database/habits_controller.dart';
-import 'package:habits_organizer/main.dart';
+import 'package:habits_organizer/view/listhabits.dart';
 import 'database/models/models.dart';
 import 'package:root/context.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class HabitOrganizerContext extends AppContext {
     Habits habit = Habits()..fromMap(map);
     habit = await _habitsController.insert(habit);
     habits.add(habit);
-    Home.ofContext?.body = const Habbits();
+    Home.ofContext?.body = const Listhabits();
     Home.ofContext?.appBar = AppBarLibrary.profilAppBar();
     return (habit);
   }
@@ -28,7 +29,6 @@ class HabitOrganizerContext extends AppContext {
   static HabitOrganizerContext get ofRootContext {
     return Provider.of<HabitOrganizerContext>(Root.context!, listen: false);
   }
-
   static HabitOrganizerContext of(BuildContext context, {listen = false}) {
     return Provider.of<HabitOrganizerContext>(context, listen: listen);
   }
