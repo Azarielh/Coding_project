@@ -36,7 +36,7 @@ class TodoController {
   }
 
   Future<int> delete(Todo todo) async {
-    Database db = _controller.database;
+    Database db = await _controller.database;
     return await db.delete(_controller.todoTable, where: 'id = ?', whereArgs: [todo.id]);
   }
 }

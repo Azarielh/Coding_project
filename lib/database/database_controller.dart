@@ -11,11 +11,9 @@ class DatabaseController {
 
   DatabaseController._internal();
 
-  get database async {
-    if (_database == null) {
-      await _create();
-    }
-    return (_database);
+  Future<Database> get database async {
+    _database = await _create();
+    return (_database!);
   }
 
   String habitsTable = "Habits";
@@ -31,13 +29,13 @@ class DatabaseController {
     onCreate: (Database db, int version) async {
       // Creer Base de donnée d'habitudes
       await db.execute(
-        'CREATE TABLE $habitsTable (id INTEGER PRIMARY KEY, designation TEXT, frequence TEXT, interval TEXT, mois TEXT, jours TEXT)'
+        'CREATE TABLE $habitsTable (id INTEGER PRIMARY KEY, designation TEXT, iteration INTEGER, frequence TEXT, interval TEXT, jours TEXT)'
       );
       // Créer base de donnée To.do
       await db.execute(
-          'CREATE TABLE $todoTable (id INTEGER PRIMARY KEY, habits_id INTEGER, when TEXT, done INTEGER, date_time INTEGER)'
+          'CREATE TABLE $todoTable (id INTEGER PRIMARY KEY, habits_id INTEGER, kan TEXT, done INTEGER, date_time TEXT)'
       );
     });
-    return (database);
+    return (_database!);
   }
 }

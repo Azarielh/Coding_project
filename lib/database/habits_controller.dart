@@ -35,7 +35,7 @@ class HabitsController {
   }
 
   Future<int> delete(Habits habits) async {
-    Database db = _controller.database;
+    Database db = await _controller.database;
     return await db.delete(_controller.habitsTable, where: 'id = ?', whereArgs: [habits.id]);
   }
 }

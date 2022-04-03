@@ -6,7 +6,7 @@ abstract class Serializable {
 
 class Model extends Serializable {
 
-  late int id;
+  int? id;
 
   @override
   void fromMap(Map<String, dynamic> data) {
