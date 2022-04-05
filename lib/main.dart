@@ -27,6 +27,6 @@ class LoadingScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
    return FractionallySizedBox(widthFactor: 1,heightFactor: 1,
-   child: Image.asset("assets/loading.png"));
+   child: Image.asset("assets/loading.png",fit: BoxFit.cover,));
   }
 }

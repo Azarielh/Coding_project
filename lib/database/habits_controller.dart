@@ -11,30 +11,30 @@ class HabitsController {
 
   HabitsController._internal();
 
-  Future<List<Habits>> getAllHabits() async {
+  Future<List<Habit>> getAllHabits() async {
     Database db = await _controller.database;
     List<Map<String, dynamic>> habitsListQuery = [];
-    List<Habits> habits = [];
+    List<Habit> habits = [];
     habitsListQuery = await db.query(_controller.habitsTable);
     for (var habit in habitsListQuery) {
-      habits.add(Habits()..fromMap(habit));
+      habits.add(Habit()..fromMap(habit));
     }
     return (habits);
   }
 
-  Future<Habits> insert(Habits habit) async {
+  Future<Habit> insert(Habit habit) async {
     Database db = await _controller.database;
     habit.id = await db.insert(_controller.habitsTable, habit.asMap());
     return habit;
   }
 
-  Future<int> update(Habits habit) async {
+  Future<int> update(Habit habit) async {
     Database db = await _controller.database;
     return await db.update(_controller.habitsTable, habit.asMap(),
         where: 'id = ?', whereArgs: [habit.id]);
   }
 
-  Future<int> delete(Habits habits) async {
+  Future<int> delete(Habit habits) async {
     Database db = await _controller.database;
     return await db.delete(_controller.habitsTable, where: 'id = ?', whereArgs: [habits.id]);
   }

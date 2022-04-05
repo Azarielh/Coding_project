@@ -3,7 +3,7 @@ import 'package:root/home.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:habits_organizer/view/listhabits.dart';
 import 'view/habits_stat.dart';
-import 'view/new_habits.dart';
+import 'view/new_edit_habits.dart';
 import 'view/todolistview.dart';
 
 ///File with all Appbar required from different pages
@@ -68,7 +68,7 @@ class AppBarLibrary {
             highlightColor: Colors.yellow,
             child: IconButton(
                 onPressed: () {
-                  Home.ofContext?.body = const NewHabit();
+                  Home.ofContext?.body = const NewEditHabit(habit: null,);
                   Home.ofContext?.appBar = AppBarLibrary.newHabitsAppBar();
                 },
                 icon: const Icon(Icons.add, color: Colors.white)),

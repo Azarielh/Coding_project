@@ -83,6 +83,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animated_dialog:
+    dependency: "direct dev"
+    description:
+      name: flutter_animated_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   flutter_bloc:
     dependency: transitive
     description:
@@ -90,6 +97,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.1"
+  flutter_expanded_tile:
+    dependency: "direct dev"
+    description:
+      name: flutter_expanded_tile
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.6"
   flutter_form_bloc:
     dependency: "direct dev"
     description:
@@ -142,6 +156,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.30.0"
+  grouped_list:
+    dependency: "direct dev"
+    description:
+      name: grouped_list
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   intl:
     dependency: transitive
     description:
@@ -216,8 +237,8 @@ packages:
     dependency: "direct dev"
     description:
       path: "."
-      ref: "32da93ca12530dbf0d6c45fd9ebfd17f87cc6408"
-      resolved-ref: "32da93ca12530dbf0d6c45fd9ebfd17f87cc6408"
+      ref: "0aa6ceac8d4183b9d0012fd23b443e4498cf3504"
+      resolved-ref: "0aa6ceac8d4183b9d0012fd23b443e4498cf3504"
       url: "https://github.com/matheme42/root"
     source: git
     version: "1.0.0+1"
