@@ -42,13 +42,24 @@ dev_dependencies:
   root:
     git:
       url: https://github.com/matheme42/root
-      ref: 0aa6ceac8d4183b9d0012fd23b443e4498cf3504
+      ref: de9a5d4bbd8f95756e3c1be97d98250baf5253b9
   shimmer: ^2.0.0
   weekday_selector: ^1.1.0
   flutter_form_bloc: ^0.30.1
   flutter_animated_dialog: ^2.0.1
   grouped_list: ^4.2.0
-  flutter_expanded_tile: ^0.3.6
+  expansion_tile_card: ^2.0.0
+  auto_size_text: ^3.0.0
+  intl: ^0.17.0
+  validators: ^3.0.0
+  lottie: ^1.2.2
+  assorted_layout_widgets: ^5.5.0
+  fluttertoast: ^8.0.9
+  flip_card: ^0.6.0
+  visibility_detector: ^0.2.2
+  transparent_image: ^2.0.0
+  video_player: ^2.3.0
+  page_transition: ^2.0.5
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -72,6 +83,9 @@ flutter:
   assets:
     - assets/
     - assets/icon/
+    - assets/lottie/
+    - assets/video/
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

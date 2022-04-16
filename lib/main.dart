@@ -1,32 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/view/habits/form/habit_form_view.dart';
+import 'package:habits_organizer/view/habits/list/habit_list_view.dart';
+import 'package:habits_organizer/view/habits/list/habits_tile.dart';
+import 'package:habits_organizer/view/habits/stats/habits_stat.dart';
+import 'package:habits_organizer/view/todo/todo_list_view.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:root/root.dart';
-import 'package:habits_organizer/appbars.dart';
-import 'package:habits_organizer/view/todolistview.dart';
 
+/// Regle d'apparition d'une daily Task
+/// 1 - Les Habit quotidien
+///     si nous somme le jours d'apparition
+///     le champ iteration correspond au nombre de fois que la tache devra etre realisé
 
-Future <dynamic>onLoading() async {
-  await Future.delayed(const Duration(seconds: 2));
-  await HabitOrganizerContext.ofRootContext.getAllHabits();
+/// 2 - Les habits hebdo
+///     doit etre validé iteration fois
+///     de preference les jours (X)
+///
+/// 3 - Les habits mensuel
+///     doit etre realisé interval fois par mois
+
+Future<void> checkHabitAvailable(HabitOrganizerContext appContext) async {
+  if (appContext.todos.isNotEmpty) {
+    return;
+  }
+  for (var habit in appContext.habits) {
+    await appContext.check1Habit(habit);
+  }
+}
+
+Future<dynamic> onLoading(BuildContext context) async {
+  await HabitOrganizerContext.of(context).getAllHabits();
+  await checkHabitAvailable(HabitOrganizerContext.of(context));
+  HabitOrganizerContext.of(context).todoNotifyListeners();
 }
 
 void main() {
+  ThemeData appTheme = ThemeData.dark()
+    ..copyWith(
+        primaryColor: Colors.purple[400],
+        appBarTheme: ThemeData.dark()
+            .appBarTheme
+            .copyWith(backgroundColor: Colors.purple[400]));
+
   runApp(Root(
-      title: 'Habits Organizer',
-      homeScreen: const TodoListView(),
-      appContext: HabitOrganizerContext(),
-      appBar: AppBarLibrary.homeAppBar(),
-      onLoading: onLoading,
-      onLoadingScreen: const LoadingScreen(),
+    title: 'Habits Organizer',
+    initialRoute: '/todo',
+    theme: appTheme,
+    routes: const {},
+    appContext: HabitOrganizerContext(),
+    onLoading: onLoading,
+    onLoadingScreen: Container(),
+    onLoadingMinDuration: const Duration(seconds: 7),
+    debugShowCheckedModeBanner: false,
+    showPerformanceOverlay: false,
+    showSemanticsDebugger: false,
+    debugShowMaterialGrid: false,
+    onGenerateRoute: (settings) {
+      switch (settings.name) {
+        case TodoView.todoRouteName:
+          return PageTransition(
+              child: const TodoView(),
+              type: PageTransitionType.leftToRightWithFade,
+              settings: settings);
+        case Listhabits.listhabitsRouteName:
+          return PageTransition(
+              child: const Listhabits(),
+              type: PageTransitionType.leftToRightWithFade,
+              settings: settings);
+        case NewEditHabit.newEditHabitRouteName:
+          return PageTransition(
+              child: const NewEditHabit(),
+              type: PageTransitionType.leftToRightWithFade,
+              settings: settings);
+        case HabitStat.habitStatRouteName:
+          return PageTransition(
+              child: const HabitStat(),
+              type: PageTransitionType.leftToRightWithFade,
+              settings: settings);
+        case "/habit/info":
+          return PageTransition(
+              child: const HeroHabitTile(),
+              type: PageTransitionType.fade,
+              settings: settings);
+        default:
+          return null;
+      }
+    },
   ));
-}
-
-class LoadingScreen extends StatelessWidget{
-  const LoadingScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-   return FractionallySizedBox(widthFactor: 1,heightFactor: 1,
-   child: Image.asset("assets/loading.png",fit: BoxFit.cover,));
-  }
 }

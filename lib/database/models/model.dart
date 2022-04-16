@@ -5,7 +5,6 @@ abstract class Serializable {
 }
 
 class Model extends Serializable {
-
   int? id;
 
   @override

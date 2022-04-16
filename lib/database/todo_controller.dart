@@ -5,22 +5,28 @@ import 'package:sqflite/sqflite.dart';
 class TodoController {
   static final TodoController _todoController = TodoController._internal();
   static final DatabaseController _controller = DatabaseController();
+
   factory TodoController() {
     return _todoController;
   }
 
   TodoController._internal();
 
-  Future<List<Todo>> getAllTodo() async {
+  Future<List<Todo>> getAllTodo({int? habitId}) async {
     Database db = await _controller.database;
     List<Map<String, dynamic>> todoListQuery = [];
 
     List<Todo> todo = [];
-    todoListQuery = await db.query(_controller.todoTable);
+    if (habitId == null) {
+      todoListQuery = await db.query(_controller.todoTable);
+    } else {
+      todoListQuery = await db.query(_controller.todoTable,
+          where: 'habit_id = ?', whereArgs: [habitId]);
+    }
     for (var habit in todoListQuery) {
       todo.add(Todo()..fromMap(habit));
     }
-    return (todo);
+    return todo;
   }
 
   Future<Todo> insert(Todo todo) async {
@@ -37,6 +43,7 @@ class TodoController {
 
   Future<int> delete(Todo todo) async {
     Database db = await _controller.database;
-    return await db.delete(_controller.todoTable, where: 'id = ?', whereArgs: [todo.id]);
+    return await db
+        .delete(_controller.todoTable, where: 'id = ?', whereArgs: [todo.id]);
   }
 }
