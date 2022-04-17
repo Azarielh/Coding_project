@@ -6,7 +6,7 @@ class HabitTileBody extends StatelessWidget {
   final Habit habit;
 
   const HabitTileBody({Key? key, required this.habit}) : super(key: key);
-
+///Bloc affichage des options de l'habitude [habit] sélectionnée
   @override
   Widget build(BuildContext context) {
     return Banner(
@@ -28,7 +28,7 @@ class HabitTileBody extends StatelessWidget {
         ));
   }
 }
-
+///Ligne Règlage intervale
 class IntervalButton extends StatelessWidget {
   final String name;
   final Function() onTap;
@@ -37,10 +37,9 @@ class IntervalButton extends StatelessWidget {
   const IntervalButton(
       {Key? key, required this.name, required this.onTap, required this.enable})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return GestureDetector( //Transforme la 'chip' en bouton
         onTap: onTap,
         child: Chip(
           label: Text(name),
@@ -50,7 +49,6 @@ class IntervalButton extends StatelessWidget {
         ));
   }
 }
-
 class IntervalHabitTile extends StatelessWidget {
   final List<String>? intervals;
   final ValueNotifier<bool> updater = ValueNotifier<bool>(false);
@@ -117,8 +115,8 @@ class IntervalHabitTile extends StatelessWidget {
       ],
     );
   }
-}
-
+}//Fin ligne interval
+///Bloc réglages jours
 class JoursButton extends StatelessWidget {
   final ValueNotifier<bool> updater = ValueNotifier<bool>(false);
   final String name;
@@ -135,7 +133,7 @@ class JoursButton extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: updater,
         builder: (context, value, child) {
-          return GestureDetector(
+          return GestureDetector( //Transforme la 'chip' en bouton
               onTap: () {
                 onTap();
                 tmp = !tmp;
@@ -164,7 +162,7 @@ class JoursHabitTile extends StatelessWidget {
       habit: habit,
     );
   }
-
+///Structure graphique modifs jours
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -210,4 +208,4 @@ class JoursHabitTile extends StatelessWidget {
       ],
     );
   }
-}
+}//Fin bloc réglages jour

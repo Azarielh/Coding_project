@@ -4,8 +4,11 @@ import 'package:habits_organizer/libraries/habit_organiser_shimmer.dart';
 import 'package:habits_organizer/view/habits/form/habit_form_view.dart';
 import 'package:habits_organizer/view/habits/form/import.dart';
 import 'package:habits_organizer/view/habits/list/habits_tile.dart';
+import 'package:habits_organizer/view/habits/stats/habits_stat.dart';
+import 'package:habits_organizer/view/todo/todo_list_view.dart';
 import 'package:provider/provider.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Listhabits extends StatelessWidget {
   const Listhabits({Key? key}) : super(key: key);
@@ -16,6 +19,7 @@ class Listhabits extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            centerTitle:true,
             elevation: 2,
             backgroundColor: Colors.deepPurple,
             title: const HabitOrganizerShimmer(
@@ -23,15 +27,19 @@ class Listhabits extends StatelessWidget {
             leading: HabitOrganizerShimmer(
               duration: const Duration(seconds: 3),
               child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.keyboard_return)),
+                  onPressed: () => Navigator.popAndPushNamed(context,TodoView.todoRouteName,
+                      arguments: PageTransitionArgument(PageTransitionType.leftToRightWithFade)
+                  ),
+                  icon: const Icon(Icons.check_box_outlined)),
             ),
             actions: [
               HabitOrganizerShimmer(
                   duration: const Duration(seconds: 3),
                   child: IconButton(
-                      onPressed: () => Navigator.pushNamed(
-                          context, NewEditHabit.newEditHabitRouteName),
+                      onPressed: () => Navigator.popAndPushNamed(
+                          context, NewEditHabit.newEditHabitRouteName,
+                          arguments: EditHabitArgument(null, PageTransitionType.leftToRightWithFade)
+                      ),
                       icon: const Icon(Icons.add)))
             ]),
         body: CloudBackground(

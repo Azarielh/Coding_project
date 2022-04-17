@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:habits_organizer/libraries/cloud_background.dart';
 import 'package:habits_organizer/libraries/libraries.dart';
 import 'package:habits_organizer/view/habits/form/import.dart';
+import 'package:page_transition/page_transition.dart';
+import '../list/habit_list_view.dart';
 
 class ListFormChild extends StatelessWidget {
   const ListFormChild({Key? key}) : super(key: key);
@@ -41,7 +42,6 @@ class ListFormChild extends StatelessWidget {
 
 class HabitForm extends StatelessWidget {
   late final AllFieldsFormBloc bloc;
-  final String title = "New Habits";
   final Habit? habit;
 
   HabitForm({Key? key, this.habit}) : super(key: key) {
@@ -69,12 +69,18 @@ class HabitForm extends StatelessWidget {
           final formBloc = BlocProvider.of<AllFieldsFormBloc>(context);
           return Scaffold(
               appBar: AppBar(
+                centerTitle:true,
                 backgroundColor: Colors.deepPurple,
                 elevation: 4,
-                title: HabitOrganizerShimmer(child: Text(title)),
+                title: const HabitOrganizerShimmer(
+                    child: Text('Créer une habitude',textAlign: TextAlign.center,)
+
+                ),
                 leading: HabitOrganizerShimmer(
                     child: IconButton(
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () => Navigator.popAndPushNamed(context,Listhabits.listhabitsRouteName,
+                            arguments: PageTransitionArgument(PageTransitionType.leftToRightWithFade)
+                        ),
                         icon: const Icon(Icons.keyboard_return))),
               ),
               body: CloudBackground(

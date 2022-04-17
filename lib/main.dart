@@ -57,31 +57,34 @@ void main() {
     showSemanticsDebugger: false,
     debugShowMaterialGrid: false,
     onGenerateRoute: (settings) {
+      PageTransitionArgument? ptype = settings.arguments as PageTransitionArgument?;
+      PageTransitionType? type = ptype?.type;
+
       switch (settings.name) {
         case TodoView.todoRouteName:
           return PageTransition(
               child: const TodoView(),
-              type: PageTransitionType.leftToRightWithFade,
+              type: type ?? PageTransitionType.fade,
               settings: settings);
         case Listhabits.listhabitsRouteName:
           return PageTransition(
               child: const Listhabits(),
-              type: PageTransitionType.leftToRightWithFade,
+              type: type ?? PageTransitionType.fade,
               settings: settings);
         case NewEditHabit.newEditHabitRouteName:
           return PageTransition(
               child: const NewEditHabit(),
-              type: PageTransitionType.leftToRightWithFade,
+              type: type ?? PageTransitionType.fade,
               settings: settings);
         case HabitStat.habitStatRouteName:
           return PageTransition(
               child: const HabitStat(),
-              type: PageTransitionType.leftToRightWithFade,
+              type: type ?? PageTransitionType.fade,
               settings: settings);
         case "/habit/info":
           return PageTransition(
               child: const HeroHabitTile(),
-              type: PageTransitionType.fade,
+              type: type ?? PageTransitionType.fade,
               settings: settings);
         default:
           return null;

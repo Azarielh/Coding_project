@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habits_organizer/database/models/models.dart';
 import 'package:habits_organizer/view/habits/form/habit_form_view.dart';
-import 'package:habits_organizer/view/habits/list/habits_tile.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HabitTileButtonBar extends StatelessWidget {
   final Habit habit;
@@ -36,7 +36,7 @@ class HabitTileButtonBar extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.pushNamed(context, NewEditHabit.newEditHabitRouteName,
-                arguments: EditHabitArgument(habit));
+                arguments: EditHabitArgument(habit, PageTransitionType.rightToLeftWithFade));
           },
           child: Column(
             children: const <Widget>[

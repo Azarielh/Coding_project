@@ -4,6 +4,8 @@ import 'package:habits_organizer/libraries/habit_organiser_shimmer.dart';
 import 'package:habits_organizer/view/habits/list/habit_list_view.dart';
 import 'package:habits_organizer/view/habits/stats/habits_stat.dart';
 import 'package:habits_organizer/view/todo/todo_list_body.dart';
+import 'package:habits_organizer/context.dart';
+import 'package:page_transition/page_transition.dart';
 
 class TodoView extends StatelessWidget {
   const TodoView({Key? key}) : super(key: key);
@@ -14,21 +16,26 @@ class TodoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const HabitOrganizerShimmer(child: Text("Daily Task")),
+          centerTitle:true,
+          elevation: 2,
           backgroundColor: Colors.deepPurple,
+          title: const HabitOrganizerShimmer(
+              duration: Duration(seconds: 3), child: Text("Daily Task")),
+          leading: HabitOrganizerShimmer(
+            duration: const Duration(seconds: 3),
+            child: IconButton(
+                onPressed: () => Navigator.popAndPushNamed(context,HabitStat.habitStatRouteName,
+                arguments: PageTransitionArgument(PageTransitionType.leftToRightWithFade)),
+                icon: const Icon(Icons.query_stats)),
+          ),
           actions: [
             HabitOrganizerShimmer(
-              child: IconButton(
-                  onPressed: () => Navigator.pushNamed(
-                      context, HabitStat.habitStatRouteName),
-                  icon: const Icon(Icons.query_stats)),
-            ),
-            HabitOrganizerShimmer(
-              child: IconButton(
-                  onPressed: () => Navigator.pushNamed(
-                      context, Listhabits.listhabitsRouteName),
-                  icon: const Icon(Icons.star_half)),
-            )
+                duration: const Duration(seconds: 3),
+                child: IconButton(
+                    onPressed: () => Navigator.popAndPushNamed(context, Listhabits.listhabitsRouteName,
+                        arguments: PageTransitionArgument(PageTransitionType.leftToRightWithFade)
+                    ),
+                    icon: const Icon(Icons.list_rounded)))
           ]),
       body:  const CloudBackground(child: TodoListBody()),
     );

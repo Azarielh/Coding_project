@@ -11,8 +11,8 @@ class TodoListTile extends StatelessWidget {
   final GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
   final Habit habit;
   final Todo todo;
-
-  TodoListTile({Key? key, required this.habit, required this.todo})
+  final int idx;
+  TodoListTile({Key? key, required this.habit, required this.todo, required this.idx,})
       : super(key: key);
 
   @override
@@ -21,13 +21,14 @@ class TodoListTile extends StatelessWidget {
     complete.value = (todo.done == 1);
     return ValueListenableBuilder(
         valueListenable: updater,
-        builder: (context, value, child) {
+        builder: (context, value, _) {
           return ValueListenableBuilder(
             valueListenable: complete,
-            builder: (context, value, child) {
+            builder: (context, value, _) {
               return AbsorbPointer(
                 absorbing: todo.done == 1,
                 child: FractionallySizedBox(
+                  alignment: idx %2 ==0 ? Alignment.centerLeft : Alignment.centerRight,
                   widthFactor: 0.95,
                   child: FlipCard(
                       fill: Fill.fillBack,
@@ -35,18 +36,19 @@ class TodoListTile extends StatelessWidget {
                       direction: FlipDirection.VERTICAL,
                       front: Card(
                         elevation: 10,
+                        color: Colors.white54,
                         shadowColor: Colors.black54,
                         child: CheckboxListTile(
                           value: updater.value,
                           onChanged: (value) {
-                            updater.value = !updater.value;
                             cardKey.currentState?.toggleCard();
                           },
-                          tileColor: complete.value
-                              ? Colors.green
-                              : Colors.transparent,
+                          tileColor: complete.value ? Colors.green : Colors.transparent,
                           title: Text(habit.designation),
-                          subtitle: Text(habit.frequence),
+                          subtitle: Align(
+                              alignment: const Alignment(-0.85, 0),
+                              child: Text(habit.frequence)),
+
                           secondary: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: FadeInImage(
@@ -61,6 +63,7 @@ class TodoListTile extends StatelessWidget {
                       ),
                       back: Card(
                         elevation: 10,
+                        color: Colors.white54,
                         shadowColor: Colors.black54,
                         child: Center(
                           child: CheckboxListTile(
@@ -79,7 +82,6 @@ class TodoListTile extends StatelessWidget {
                               HabitOrganizerContext.of(context).lockTodo(todo);
                             }),
                             onChanged: (value) {
-                              updater.value = !updater.value;
                               cardKey.currentState?.toggleCard();
                             },
                             value: updater.value,

@@ -3,8 +3,14 @@ import 'package:habits_organizer/database/habits_controller.dart';
 import 'package:habits_organizer/database/todo_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
+import 'package:page_transition/page_transition.dart';
 import 'database/models/models.dart';
+
+class PageTransitionArgument {
+  final PageTransitionType type;
+
+  PageTransitionArgument(this.type);
+}
 
 class HabitOrganizerContext extends ChangeNotifier {
   final HabitsController _habitsController = HabitsController();

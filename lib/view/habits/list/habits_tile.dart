@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:habits_organizer/context.dart';
 import 'package:habits_organizer/database/models/habits.dart';
 import 'package:habits_organizer/popup/delete_habit_validation.dart';
 import 'package:habits_organizer/view/habits/list/habit_tile_body.dart';
-
+import 'package:page_transition/page_transition.dart';
 import 'habit_tile_button_bar.dart';
 
 class HabitTile extends StatelessWidget {
@@ -46,7 +45,7 @@ class HabitTile extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, "/habit/info",
-                    arguments: HabitTileArgument(habit, confirmDismiss));
+                    arguments: HabitTileArgument(habit, confirmDismiss, PageTransitionType.rightToLeftWithFade));
               },
               child: ListTile(
                 tileColor: Colors.white54,
@@ -65,11 +64,13 @@ class HabitTile extends StatelessWidget {
   }
 }
 
-class HabitTileArgument {
+class HabitTileArgument extends PageTransitionArgument {
   final Habit habit;
   final Future<bool>Function (BuildContext context, DismissDirection direction)delete;
+  final PageTransitionType transition;
 
-  HabitTileArgument(this.habit, this.delete);
+
+  HabitTileArgument(this.habit, this.delete, this.transition) : super(transition);
 }
 
 class HeroHabitTile extends StatelessWidget {
