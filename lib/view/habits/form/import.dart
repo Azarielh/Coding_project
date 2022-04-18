@@ -2,7 +2,6 @@ library habit_form_import;
 
 export 'package:flutter_form_bloc/flutter_form_bloc.dart';
 export 'package:flutter_form_bloc/flutter_form_bloc.dart';
-export 'package:habits_organizer/context.dart';
 export 'package:habits_organizer/database/models/models.dart';
 export 'package:habits_organizer/database/models/models.dart';
 export 'package:habits_organizer/view/habits/form/controller_form.dart';

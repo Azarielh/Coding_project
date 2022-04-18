@@ -5,10 +5,12 @@ import 'package:page_transition/page_transition.dart';
 
 class HabitTileButtonBar extends StatelessWidget {
   final Habit habit;
-  final Future<bool>Function (BuildContext context, DismissDirection direction)delete;
+  final Future<bool> Function(BuildContext context, DismissDirection direction)
+      delete;
 
-
-  const HabitTileButtonBar({Key? key, required this.habit, required this.delete}) : super(key: key);
+  const HabitTileButtonBar(
+      {Key? key, required this.habit, required this.delete})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

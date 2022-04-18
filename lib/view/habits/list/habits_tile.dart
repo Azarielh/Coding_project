@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/database/models/habits.dart';
 import 'package:habits_organizer/popup/delete_habit_validation.dart';
 import 'package:habits_organizer/view/habits/list/habit_tile_body.dart';
@@ -14,8 +14,8 @@ class HabitTile extends StatelessWidget {
   const HabitTile({Key? key, required this.habit, required this.idx})
       : super(key: key);
 
-  Future<bool> confirmDismiss(BuildContext context,
-      DismissDirection direction) async {
+  Future<bool> confirmDismiss(
+      BuildContext context, DismissDirection direction) async {
     Map a = <DismissDirection, DialogTransitionType>{
       DismissDirection.startToEnd: DialogTransitionType.slideFromRight,
       DismissDirection.endToStart: DialogTransitionType.slideFromLeft,
@@ -35,6 +35,25 @@ class HabitTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
+      child: FractionallySizedBox(
+        widthFactor: 0.9,
+        alignment: Alignment(idx % 2 == 0 ? -0.9 : 0.9, 0),
+        child: Dismissible(
+          confirmDismiss: (val) async => await confirmDismiss(context, val),
+          key: Key("-${habit.id}-"),
+          child: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, HeroHabitView.habitHeroRouteName,
+                  arguments: HabitTileArgument(habit, confirmDismiss));
+            },
+            child: ListTile(
+              tileColor: Colors.white54,
+              leading: Hero(
+                  tag: "demo ${habit.id}",
+                  child: CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      child: Image.asset("assets/images/yoga.png"))),
+              title: Text(habit.designation),
       child: Align(
         alignment: Alignment(idx % 2 == 0 ? -0.9 : 0.9, 0),
         child: FractionallySizedBox(
@@ -70,24 +89,21 @@ class HabitTileArgument extends PageTransitionArgument {
   final PageTransitionType transition;
 
 
+
   HabitTileArgument(this.habit, this.delete, this.transition) : super(transition);
 }
 
-class HeroHabitTile extends StatelessWidget {
-  const HeroHabitTile({Key? key}) : super(key: key);
+class HeroHabitView extends StatelessWidget {
+  const HeroHabitView({Key? key}) : super(key: key);
+
+  static const String habitHeroRouteName = "/habit/info";
 
   @override
   Widget build(BuildContext context) {
     HabitTileArgument args =
-    ModalRoute
-        .of(context)!
-        .settings
-        .arguments as HabitTileArgument;
+        ModalRoute.of(context)!.settings.arguments as HabitTileArgument;
     return Material(
-      color: Theme
-          .of(context)
-          .primaryColor
-          .withOpacity(0.7),
+      color: Theme.of(context).primaryColor.withOpacity(0.7),
       child: InkWell(
         onTap: () => Navigator.pop(context),
         child: Padding(
@@ -101,13 +117,15 @@ class HeroHabitTile extends StatelessWidget {
                       backgroundColor: Colors.orange,
                       radius: MediaQuery.of(context).size.longestSide / 10,
                       child: Image.asset(
-                        "assets/images/yoga.png", fit: BoxFit.contain,)),
+                        "assets/images/yoga.png",
+                        fit: BoxFit.contain,
+                      )),
                 ),
                 Center(
                     child: Text(
-                      args.habit.designation,
-                      textScaleFactor: 2,
-                    )),
+                  args.habit.designation,
+                  textScaleFactor: 3,
+                )),
                 HabitTileBody(habit: args.habit),
                 HabitTileButtonBar(habit: args.habit, delete: args.delete)
               ],

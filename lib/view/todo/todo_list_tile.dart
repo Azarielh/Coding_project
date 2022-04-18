@@ -1,6 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/database/models/models.dart';
 import 'package:habits_organizer/view/todo/loading_bar.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -69,8 +69,7 @@ class TodoListTile extends StatelessWidget {
                           child: CheckboxListTile(
                             checkColor: Colors.green,
                             secondary: FadeInImage(
-                              image:
-                              const AssetImage("assets/images/yoga.png"),
+                              image: const AssetImage("assets/images/yoga.png"),
                               placeholder: MemoryImage(kTransparentImage),
                             ),
                             title: Text(habit.designation),

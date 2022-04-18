@@ -37,7 +37,7 @@ class TodoView extends StatelessWidget {
                     ),
                     icon: const Icon(Icons.list_rounded)))
           ]),
-      body:  const CloudBackground(child: TodoListBody()),
+      body: const CloudBackground(child: TodoListBody()),
     );
   }
 }

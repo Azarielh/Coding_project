@@ -4,14 +4,14 @@ import 'package:video_player/video_player.dart';
 class VideoApp extends UniqueWidget {
   static VideoPlayerController? _controller;
 
-  const VideoApp({required GlobalKey<State<StatefulWidget>> key}) : super(key: key);
+  const VideoApp({required GlobalKey<State<StatefulWidget>> key})
+      : super(key: key);
 
   @override
   _VideoAppState createState() => _VideoAppState();
 }
 
 class _VideoAppState extends State<VideoApp> {
-
   @override
   void initState() {
     super.initState();
@@ -49,6 +49,9 @@ class CloudBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [VideoApp(key: GlobalKey<_VideoAppState>()), child ?? Container()]);
+    return Stack(children: [
+      VideoApp(key: GlobalKey<_VideoAppState>()),
+      child ?? Container()
+    ]);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/database/models/models.dart';
 import 'package:habits_organizer/view/todo/todo_list_tile.dart';
 import 'package:provider/provider.dart';

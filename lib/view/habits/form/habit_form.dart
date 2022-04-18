@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/libraries/libraries.dart';
 import 'package:habits_organizer/view/habits/form/import.dart';
 import 'package:page_transition/page_transition.dart';
@@ -48,7 +49,7 @@ class HabitForm extends StatelessWidget {
     bloc = AllFieldsFormBloc(habit);
   }
 
-  void onSuccess(context, FormBlocSuccess<String, String> state) async {
+  void onSuccess(context, FormBlocSuccess<String, String> state) {
     HabitOrganizerContext appContext = HabitOrganizerContext.of(context);
     Map<String, dynamic> map = {};
     map['interval'] = null;
@@ -57,8 +58,9 @@ class HabitForm extends StatelessWidget {
     map['designation'] = null;
     map['iteration'] = "1";
     map.addAll(state.toJson());
-    await appContext.editCreateHabit(data: map, habit: habit);
-    Navigator.pop(context);
+    appContext.editCreateHabit(data: map, habit: habit).then((_) {
+      Navigator.pop(context);
+    });
   }
 
   @override
@@ -91,8 +93,7 @@ class HabitForm extends StatelessWidget {
                       widthFactor: 0.9,
                       child:
                           FormBlocListener<AllFieldsFormBloc, String, String>(
-                              onSuccess: (context, state) =>
-                                  onSuccess(context, state),
+                              onSuccess: onSuccess,
                               child: ScrollableFormBlocManager(
                                   formBloc: formBloc,
                                   child: const ListFormChild())),

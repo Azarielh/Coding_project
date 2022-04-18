@@ -16,17 +16,17 @@ class TodoController {
     Database db = await _controller.database;
     List<Map<String, dynamic>> todoListQuery = [];
 
-    List<Todo> todo = [];
+    List<Todo> todos = [];
     if (habitId == null) {
       todoListQuery = await db.query(_controller.todoTable);
     } else {
       todoListQuery = await db.query(_controller.todoTable,
           where: 'habit_id = ?', whereArgs: [habitId]);
     }
-    for (var habit in todoListQuery) {
-      todo.add(Todo()..fromMap(habit));
+    for (var todo in todoListQuery) {
+      todos.add(Todo()..fromMap(todo));
     }
-    return todo;
+    return todos;
   }
 
   Future<Todo> insert(Todo todo) async {

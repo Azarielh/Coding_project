@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grouped_list/grouped_list.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/libraries/cloud_background.dart';
 import 'package:habits_organizer/libraries/habit_organiser_shimmer.dart';
 import 'package:habits_organizer/view/habits/form/habit_form_view.dart';
@@ -45,11 +47,11 @@ class Listhabits extends StatelessWidget {
         body: CloudBackground(
           child: Consumer<HabitOrganizerContext>(
               builder: (context, appContext, child) {
-                var habitsMapList = [];
-                for (var habit in appContext.habits) {
-                  habitsMapList.add(habit.asMap());
-                }
-            return  GroupedListView<dynamic, String>(
+            var habitsMapList = [];
+            for (var habit in appContext.habits) {
+              habitsMapList.add(habit.asMap());
+            }
+            return GroupedListView<dynamic, String>(
               padding: EdgeInsets.zero,
               elements: habitsMapList,
               groupBy: (dynamic element) => element['frequence'],
@@ -62,7 +64,7 @@ class Listhabits extends StatelessWidget {
               },
               indexedItemBuilder: (context, dynamic element, index) {
                 HabitOrganizerContext appContext =
-                HabitOrganizerContext.of(context);
+                    HabitOrganizerContext.of(context);
                 Habit habit = appContext.habits
                     .firstWhere((habit) => habit.id == element['id']);
                 return HabitTile(habit: habit, idx: index);

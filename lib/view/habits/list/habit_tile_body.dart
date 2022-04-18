@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/database/models/models.dart';
 
 class HabitTileBody extends StatelessWidget {
@@ -69,19 +69,7 @@ class IntervalHabitTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: const [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Interval"),
-            ),
-            Expanded(
-                child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Divider(color: Colors.black),
-            )),
-          ],
-        ),
+        const Align(alignment: Alignment(-1, 0), child: Text("Interval")),
         ValueListenableBuilder(
             valueListenable: updater,
             builder: (context, value, child) {
@@ -167,18 +155,12 @@ class JoursHabitTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: const [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("days"),
-            ),
-            Expanded(
-                child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Divider(color: Colors.black),
-            )),
-          ],
+        const Align(
+          alignment: Alignment(-1, 0),
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("days"),
+          ),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.longestSide / 7,

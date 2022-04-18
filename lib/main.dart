@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habits_organizer/context.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/view/habits/form/habit_form_view.dart';
 import 'package:habits_organizer/view/habits/list/habit_list_view.dart';
 import 'package:habits_organizer/view/habits/list/habits_tile.dart';
@@ -20,19 +20,9 @@ import 'package:root/root.dart';
 /// 3 - Les habits mensuel
 ///     doit etre realisé interval fois par mois
 
-Future<void> checkHabitAvailable(HabitOrganizerContext appContext) async {
-  if (appContext.todos.isNotEmpty) {
-    return;
-  }
-  for (var habit in appContext.habits) {
-    await appContext.check1Habit(habit);
-  }
-}
-
 Future<dynamic> onLoading(BuildContext context) async {
   await HabitOrganizerContext.of(context).getAllHabits();
-  await checkHabitAvailable(HabitOrganizerContext.of(context));
-  HabitOrganizerContext.of(context).todoNotifyListeners();
+  await HabitOrganizerContext.of(context).checkForTotoTodayTodoToday();
 }
 
 void main() {
@@ -45,7 +35,7 @@ void main() {
 
   runApp(Root(
     title: 'Habits Organizer',
-    initialRoute: '/todo',
+    initialRoute: TodoView.todoRouteName,
     theme: appTheme,
     routes: const {},
     appContext: HabitOrganizerContext(),
@@ -81,7 +71,7 @@ void main() {
               child: const HabitStat(),
               type: type ?? PageTransitionType.fade,
               settings: settings);
-        case "/habit/info":
+        case HeroHabitView.habitHeroRouteName:
           return PageTransition(
               child: const HeroHabitTile(),
               type: type ?? PageTransitionType.fade,

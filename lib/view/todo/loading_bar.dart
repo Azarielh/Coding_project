@@ -43,7 +43,7 @@ class ProgBarState extends State<ProgBar> with TickerProviderStateMixin {
         int visible = visibilityInfo.visibleFraction.toInt();
         if (visible == 1) {
           _controller.forward();
-        } else {
+        } else if (mounted) {
           _controller.stop();
           _controller.reset();
         }
