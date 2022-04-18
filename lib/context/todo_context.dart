@@ -69,14 +69,12 @@ mixin TodoContext on ChangeNotifier {
       }
     }
 
-   /* if (habit. > todos.length) {
+    /* if (habit. > todos.length) {
       return (true);
     }
     */
     return (false);
   }
-
-
 
   Future<void> checkForTodo(Habit habit) async {
     String cDay = DateFormat.EEEE().format(DateTime.now()).substring(0, 2);
@@ -85,7 +83,9 @@ mixin TodoContext on ChangeNotifier {
     todos.removeWhere((todo) => todo.habitId == habit.id);
     List<Todo> _alreadyTodos = await getAllTodoFromHabit(habit);
 
-    if (_checkForTodoDaily(habit, _alreadyTodos, cDay) || _checkForTodoMensuel(habit, _alreadyTodos, cDay)) {
+    if (_checkForTodoDaily(habit, _alreadyTodos, cDay) ||
+        _checkForTodoMensuel(habit, _alreadyTodos, cDay) ||
+        _checkForTodoHebdo(habit, _alreadyTodos, cDay)) {
       Todo todo = Todo();
       todo.habitId = habit.id!;
       todo.dateTime = cDate;

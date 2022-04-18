@@ -3,6 +3,7 @@ import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/libraries/libraries.dart';
 import 'package:habits_organizer/view/habits/form/import.dart';
 import 'package:page_transition/page_transition.dart';
+
 import '../list/habit_list_view.dart';
 
 class ListFormChild extends StatelessWidget {
@@ -71,18 +72,20 @@ class HabitForm extends StatelessWidget {
           final formBloc = BlocProvider.of<AllFieldsFormBloc>(context);
           return Scaffold(
               appBar: AppBar(
-                centerTitle:true,
+                centerTitle: true,
                 backgroundColor: Colors.deepPurple,
                 elevation: 4,
                 title: const HabitOrganizerShimmer(
-                    child: Text('Créer une habitude',textAlign: TextAlign.center,)
-
-                ),
+                    child: Text(
+                  'Créer une habitude',
+                  textAlign: TextAlign.center,
+                )),
                 leading: HabitOrganizerShimmer(
                     child: IconButton(
-                        onPressed: () => Navigator.popAndPushNamed(context,Listhabits.listhabitsRouteName,
-                            arguments: PageTransitionArgument(PageTransitionType.leftToRightWithFade)
-                        ),
+                        onPressed: () => Navigator.popAndPushNamed(
+                            context, Listhabits.listhabitsRouteName,
+                            arguments: PageTransitionArgument(
+                                PageTransitionType.leftToRightWithFade)),
                         icon: const Icon(Icons.keyboard_return))),
               ),
               body: CloudBackground(

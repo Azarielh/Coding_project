@@ -15,28 +15,27 @@ class HabitStatState extends State<HabitStat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          centerTitle:true,
-          elevation: 2,
-          backgroundColor: Colors.deepPurple,
-          title:
-              const HabitOrganizerShimmer(child: Text("Encrage des Habitudes")),
-          leading: HabitOrganizerShimmer(
-            child: IconButton(
-                onPressed: () => Navigator.popAndPushNamed(
-                    context, Listhabits.listhabitsRouteName),
-                icon: const Icon(Icons.list_rounded, color: Colors.white)),
-          ),
-          actions: [
-            HabitOrganizerShimmer(
+        appBar: AppBar(
+            centerTitle: true,
+            elevation: 2,
+            backgroundColor: Colors.deepPurple,
+            title: const HabitOrganizerShimmer(
+                child: Text("Encrage des Habitudes")),
+            leading: HabitOrganizerShimmer(
               child: IconButton(
                   onPressed: () => Navigator.popAndPushNamed(
                       context, Listhabits.listhabitsRouteName),
-                  icon: const Icon(Icons.check_box_outlined, color: Colors.white)),
-            )
-          ]),
-        body: const CloudBackground()
-    );
+                  icon: const Icon(Icons.list_rounded, color: Colors.white)),
+            ),
+            actions: [
+              HabitOrganizerShimmer(
+                child: IconButton(
+                    onPressed: () => Navigator.popAndPushNamed(
+                        context, Listhabits.listhabitsRouteName),
+                    icon: const Icon(Icons.check_box_outlined,
+                        color: Colors.white)),
+              )
+            ]),
+        body: const CloudBackground());
   }
 }
-

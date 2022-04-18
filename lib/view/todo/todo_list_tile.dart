@@ -12,8 +12,13 @@ class TodoListTile extends StatelessWidget {
   final Habit habit;
   final Todo todo;
   final int idx;
-  TodoListTile({Key? key, required this.habit, required this.todo, required this.idx,})
-      : super(key: key);
+
+  TodoListTile({
+    Key? key,
+    required this.habit,
+    required this.todo,
+    required this.idx,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,9 @@ class TodoListTile extends StatelessWidget {
               return AbsorbPointer(
                 absorbing: todo.done == 1,
                 child: FractionallySizedBox(
-                  alignment: idx %2 ==0 ? Alignment.centerLeft : Alignment.centerRight,
+                  alignment: idx % 2 == 0
+                      ? Alignment.centerLeft
+                      : Alignment.centerRight,
                   widthFactor: 0.95,
                   child: FlipCard(
                       fill: Fill.fillBack,
@@ -43,12 +50,13 @@ class TodoListTile extends StatelessWidget {
                           onChanged: (value) {
                             cardKey.currentState?.toggleCard();
                           },
-                          tileColor: complete.value ? Colors.green : Colors.transparent,
+                          tileColor: complete.value
+                              ? Colors.green
+                              : Colors.transparent,
                           title: Text(habit.designation),
                           subtitle: Align(
                               alignment: const Alignment(-0.85, 0),
                               child: Text(habit.frequence)),
-
                           secondary: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: FadeInImage(

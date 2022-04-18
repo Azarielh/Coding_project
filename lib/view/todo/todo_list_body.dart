@@ -19,7 +19,11 @@ class TodoListBody extends StatelessWidget {
             itemBuilder: (BuildContext context, int idx) {
               Habit habit = appContext.habits.firstWhere(
                   (habit) => habit.id == appContext.todos[idx].habitId);
-              return TodoListTile(habit: habit, todo: appContext.todos[idx],idx: idx,);
+              return TodoListTile(
+                habit: habit,
+                todo: appContext.todos[idx],
+                idx: idx,
+              );
             },
           ),
         );

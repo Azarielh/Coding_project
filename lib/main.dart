@@ -47,7 +47,8 @@ void main() {
     showSemanticsDebugger: false,
     debugShowMaterialGrid: false,
     onGenerateRoute: (settings) {
-      PageTransitionArgument? ptype = settings.arguments as PageTransitionArgument?;
+      PageTransitionArgument? ptype =
+          settings.arguments as PageTransitionArgument?;
       PageTransitionType? type = ptype?.type;
 
       switch (settings.name) {
@@ -73,7 +74,7 @@ void main() {
               settings: settings);
         case HeroHabitView.habitHeroRouteName:
           return PageTransition(
-              child: const HeroHabitTile(),
+              child: const HeroHabitView(),
               type: type ?? PageTransitionType.fade,
               settings: settings);
         default:

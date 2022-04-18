@@ -38,7 +38,8 @@ class HabitTileButtonBar extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.pushNamed(context, NewEditHabit.newEditHabitRouteName,
-                arguments: EditHabitArgument(habit, PageTransitionType.rightToLeftWithFade));
+                arguments: EditHabitArgument(
+                    habit, PageTransitionType.rightToLeftWithFade));
           },
           child: Column(
             children: const <Widget>[

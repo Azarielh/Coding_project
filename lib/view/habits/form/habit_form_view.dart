@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habits_organizer/context/context.dart';
 import 'package:habits_organizer/view/habits/form/import.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,7 +18,7 @@ class NewEditHabit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EditHabitArgument? args =
-    ModalRoute.of(context)!.settings.arguments as EditHabitArgument?;
+        ModalRoute.of(context)!.settings.arguments as EditHabitArgument?;
     return HabitForm(habit: args?.habit);
   }
 }

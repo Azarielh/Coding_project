@@ -5,6 +5,7 @@ import 'package:habits_organizer/database/models/habits.dart';
 import 'package:habits_organizer/popup/delete_habit_validation.dart';
 import 'package:habits_organizer/view/habits/list/habit_tile_body.dart';
 import 'package:page_transition/page_transition.dart';
+
 import 'habit_tile_button_bar.dart';
 
 class HabitTile extends StatelessWidget {
@@ -34,63 +35,41 @@ class HabitTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FractionallySizedBox(
-        widthFactor: 0.9,
-        alignment: Alignment(idx % 2 == 0 ? -0.9 : 0.9, 0),
-        child: Dismissible(
-          confirmDismiss: (val) async => await confirmDismiss(context, val),
-          key: Key("-${habit.id}-"),
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, HeroHabitView.habitHeroRouteName,
-                  arguments: HabitTileArgument(habit, confirmDismiss));
-            },
-            child: ListTile(
-              tileColor: Colors.white54,
-              leading: Hero(
-                  tag: "demo ${habit.id}",
-                  child: CircleAvatar(
-                      backgroundColor: Colors.orange,
-                      child: Image.asset("assets/images/yoga.png"))),
-              title: Text(habit.designation),
-      child: Align(
-        alignment: Alignment(idx % 2 == 0 ? -0.9 : 0.9, 0),
+        padding: const EdgeInsets.all(8.0),
         child: FractionallySizedBox(
-          widthFactor: 0.9,
-          child: Dismissible(
-            confirmDismiss: (val) async => await confirmDismiss(context, val),
-            key: Key("-${habit.id}-"),
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/habit/info",
-                    arguments: HabitTileArgument(habit, confirmDismiss, PageTransitionType.rightToLeftWithFade));
-              },
-              child: ListTile(
-                tileColor: Colors.white54,
-                leading: Hero(
-                    tag: "demo ${habit.id}",
-                    child: CircleAvatar(
-                        backgroundColor: Colors.orange,
-                        child: Image.asset("assets/images/yoga.png"))),
-                title: Text(habit.designation),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+            widthFactor: 0.9,
+            alignment: Alignment(idx % 2 == 0 ? -0.9 : 0.9, 0),
+            child: Dismissible(
+                confirmDismiss: (val) async =>
+                    await confirmDismiss(context, val),
+                key: Key("-${habit.id}-"),
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, HeroHabitView.habitHeroRouteName,
+                          arguments: HabitTileArgument(habit, confirmDismiss,
+                              PageTransitionType.leftToRightWithFade));
+                    },
+                    child: ListTile(
+                      tileColor: Colors.white54,
+                      leading: Hero(
+                          tag: "demo ${habit.id}",
+                          child: CircleAvatar(
+                              backgroundColor: Colors.orange,
+                              child: Image.asset("assets/images/yoga.png"))),
+                      title: Text(habit.designation),
+                    )))));
   }
 }
 
 class HabitTileArgument extends PageTransitionArgument {
   final Habit habit;
-  final Future<bool>Function (BuildContext context, DismissDirection direction)delete;
+  final Future<bool> Function(BuildContext context, DismissDirection direction)
+      delete;
   final PageTransitionType transition;
 
-
-
-  HabitTileArgument(this.habit, this.delete, this.transition) : super(transition);
+  HabitTileArgument(this.habit, this.delete, this.transition)
+      : super(transition);
 }
 
 class HeroHabitView extends StatelessWidget {
